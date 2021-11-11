@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "0b6f2fdf-d769-45e3-95d4-5a61096ce723",
+		"_postman_id": "90710df0-0db9-4e11-ae5d-0578e6e00667",
 		"name": "OM2M REST APIs",
 		"description": "The collection contains API requests samples to send HTTP request (GET, POST, UPDATE, DELETE) to the OM2M platform. ",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -47,7 +47,7 @@
 			"response": []
 		},
 		{
-			"name": "create cnt",
+			"name": "create Node Container",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -64,7 +64,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"m2m:cnt\":{\n        \"rn\": \"Data-1\",\n        \"lbl\": [\n            \"Label-1\",\n            \"Label-2\"\n        ],\n        \"mni\": 120\n\n    }\n}"
+					"raw": "{\n    \"m2m:cnt\":{\n        \"rn\": \"Node-1\",\n        \"lbl\": [\n            \"Label-1\",\n            \"Label-2\"\n        ],\n        \"mni\": 120\n\n    }\n}"
 				},
 				"url": {
 					"raw": "http://127.0.0.1:8080/~/in-cse/in-name/Test-AE",
@@ -81,6 +81,48 @@
 						"in-cse",
 						"in-name",
 						"Test-AE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create Data container",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-M2M-Origin",
+						"value": "admin:admin",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;ty=3",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"m2m:cnt\":{\n        \"rn\": \"Data\",\n        \"lbl\": [\n            \"Label-1\",\n            \"Label-2\"\n        ],\n        \"mni\": 120\n\n    }\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/~/in-cse/in-name/Test-AE/Node-1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"~",
+						"in-cse",
+						"in-name",
+						"Test-AE",
+						"Node-1",
+						""
 					]
 				}
 			},
@@ -107,12 +149,12 @@
 					"raw": "{\n    \"m2m:cin\":{\n        \"lbl\":[\n            \"Label-1\",\n            \"Label-2\"\n        ],\n        \"con\":\"[test1,test2]\"\n\n    }\n}",
 					"options": {
 						"raw": {
-							"language": "xml"
+							"language": "json"
 						}
 					}
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8080/~/in-cse/in-name/Test-AE/Data-1/",
+					"raw": "http://127.0.0.1:8080/~/in-cse/in-name/Test-AE/Node-1/Data",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -126,7 +168,97 @@
 						"in-cse",
 						"in-name",
 						"Test-AE",
-						"Data-1",
+						"Node-1",
+						"Data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create descriptor cnt",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-M2M-Origin",
+						"value": "admin:admin",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;ty=3",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"m2m:cnt\":{\n        \"rn\": \"Descriptor\",\n        \"lbl\": [\n            \"Label-1\",\n            \"Label-2\"\n        ],\n        \"mni\": 120\n\n    }\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/~/in-cse/in-name/Test-AE/Node-1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"~",
+						"in-cse",
+						"in-name",
+						"Test-AE",
+						"Node-1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create descriptor cin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-M2M-Origin",
+						"value": "admin:admin",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;ty=4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"m2m:cin\":{\n        \"lbl\":[\n            \"Label-1\",\n            \"Label-2\"\n        ],\n        \"con\":\"[Temperature,Humidity]\"\n\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/~/in-cse/in-name/Test-AE/Node-1/Descriptor/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"~",
+						"in-cse",
+						"in-name",
+						"Test-AE",
+						"Node-1",
+						"Descriptor",
 						""
 					]
 				}
