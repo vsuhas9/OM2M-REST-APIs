@@ -1,0 +1,415 @@
+{
+	"info": {
+		"_postman_id": "0b6f2fdf-d769-45e3-95d4-5a61096ce723",
+		"name": "OM2M REST APIs",
+		"description": "The collection contains API requests samples to send HTTP request (GET, POST, UPDATE, DELETE) to the OM2M platform. ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create ae",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-M2M-Origin",
+						"value": "admin:admin",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;ty=2",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"m2m:ae\":{\n        \"rn\": \"Test-AE\",\n        \"lbl\": [\n            \"Label-1\",\n            \"Label-2\"\n        ],\n        \"rr\": false,\n        \"api\": \"test-AE\"\n\n    }\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/~/in-cse/in-name/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"~",
+						"in-cse",
+						"in-name",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create cnt",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-M2M-Origin",
+						"value": "admin:admin",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;ty=3",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"m2m:cnt\":{\n        \"rn\": \"Data-1\",\n        \"lbl\": [\n            \"Label-1\",\n            \"Label-2\"\n        ],\n        \"mni\": 120\n\n    }\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/~/in-cse/in-name/Test-AE",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"~",
+						"in-cse",
+						"in-name",
+						"Test-AE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create cin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-M2M-Origin",
+						"value": "admin:admin",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;ty=4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"m2m:cin\":{\n        \"lbl\":[\n            \"Label-1\",\n            \"Label-2\"\n        ],\n        \"con\":\"[test1,test2]\"\n\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/~/in-cse/in-name/Test-AE/Data-1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"~",
+						"in-cse",
+						"in-name",
+						"Test-AE",
+						"Data-1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create subs",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-M2M-Origin",
+						"value": "admin:admin",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;ty=23",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"m2m:sub\": {\n        \"rn\": \"SUB-MON\",\n        \"nu\": \"http://localhost:1400/monitor\",\n        \"nct\": \"2\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/~/in-cse/in-name/Test-AE/Data-1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"~",
+						"in-cse",
+						"in-name",
+						"Test-AE",
+						"Data-1",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get latest cin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-M2M-Origin",
+						"type": "text",
+						"value": "guest:guest"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8080/~/in-cse/in-name/AE-Test/Data/la",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"~",
+						"in-cse",
+						"in-name",
+						"AE-Test",
+						"Data",
+						"la"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get oldest cin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-M2M-Origin",
+						"type": "text",
+						"value": "guest:guest"
+					},
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8080/~/in-cse/in-name/AE-Test/Data/ol",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"~",
+						"in-cse",
+						"in-name",
+						"AE-Test",
+						"Data",
+						"ol"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all data of a cnt",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-M2M-Origin",
+						"value": "admin:admin",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8080/~/in-cse/in-name/AE-Test/Data?rcn=4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"~",
+						"in-cse",
+						"in-name",
+						"AE-Test",
+						"Data"
+					],
+					"query": [
+						{
+							"key": "rcn",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete resource",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-M2M-Origin",
+						"value": "admin:admin",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/~/in-cse/in-name/Test-AE",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"~",
+						"in-cse",
+						"in-name",
+						"Test-AE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update cnt attrs",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-M2M-Origin",
+						"value": "admin:admin",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json;ty=3",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"m2m:cnt\":{\n        \"lbl\": [\n            \"Label-3\",\n            \"Label-4\"\n        ],\n        \"mni\": 222\n\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8080/~/in-cse/in-name/Test-AE/Data-1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8080",
+					"path": [
+						"~",
+						"in-cse",
+						"in-name",
+						"Test-AE",
+						"Data-1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
