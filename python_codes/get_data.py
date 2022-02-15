@@ -2,14 +2,14 @@ from oneM2M_functions import *
 
 server = "http://127.0.0.1:8080"
 cse = "/~/in-cse/in-name/"
-ae = "Test-1"
+ae = "AE-TEST-PY"
 container_name = "Data"
 
 # ------------------------------------------
 # Fill code here to get latest content_instance
 # specified by the URI
 # ------------------------------------------
-ret_code, latest_data = get_data(server+cse+ae+"/Data/la")
+ret_code, latest_data = get_data(server+cse+ae+"/Node-1/Data/la")
 print(latest_data)
 # ------------------------------------------
 

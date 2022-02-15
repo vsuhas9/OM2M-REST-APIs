@@ -1,30 +1,27 @@
-# Intro To IoT
-
-# OM2M
-* Download the latest version of OM2M platform: https://wiki.eclipse.org/OM2M/Download
+# OM2M-REST-APIs
 
 # POSTMAN
 * Download and install the POSTMAN REST client: http://www.postman.com
 
 # POSTMAN_collection 
-* The postman collection is inside POSTMAN_collection
-* Import the collection in POSTMAN as explained in: https://apitransform.com/how-to-import-a-collection-into-postman/
-* To create the resource tree, send the POST requests (create ae > create cnt > create cin)
+* The postman collections are inside "***postman-collections***" folder:
+* REST-APIs --> postman-collections 
 
-# nodeMCU_codes
-* Basic source codes are inside nodeMCU_codes
+* Import the collections (APIs & Environment) ( in POSTMAN as explained in: https://apitransform.com/how-to-import-a-collection-into-postman/
+
+# Virtual Environment
+
+* Create the python virtual environment and install the requirements by pip install -r requirements.txt
+
 
 # python_codes
-* Basic source codes to create the resource tree
-* Install the "requests" and "json" modules (skip this step if already installed)
-* Run create_resource_tree.py to create the oneM2M resource tree
-* Run get_data.py to retrieve data from OM2M platform using REST APIs
-* Run delete_resource.py, if you want to delete particular resource 
+* Install the "requests", "os" and "json" modules (skip this step if already installed)
+* 
 
-# Resource Tree Creation
-* Start the OM2M platform by executing the "start.bat" script on Windows or "start.sh" on Linux and Mac OS.
-* Run create_resource_tree.py to create the oneM2M resource tree 
-* Open http://127.0.0.1:8080/webpage in browser.
-* Enter username:password = admin:admin
-* You should see the resource tree ![sample_resource_tree.png](https://github.com/shubham-mante/esw-iiith/blob/main/images/sample_resource_tree.png)
+# Data-WareHouse
+* 
+# Data-Visualization
 
+
+
+***Note:*** The user registration process for IUDX_APIs and IITH_APIs should be done only once so it is recommended to complete it using Postman Collection. Later, you can use Python scripts.
