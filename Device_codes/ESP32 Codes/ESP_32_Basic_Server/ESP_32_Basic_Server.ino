@@ -1,15 +1,8 @@
 #include <WiFi.h>
 
-#define MAIN_SSID "ssid"
-#define MAIN_PASS "password"
+#define MAIN_SSID "suhas"
+#define MAIN_PASS "1234567890"
 
-#define CSE_IP      "replace with system ip"
-#define CSE_PORT    5089
-#define OM2M_ORGIN    "admin:admin"
-#define OM2M_MN     "/~/mn-cse/mn-name/"
-#define OM2M_AE_0     "LAMP_0"
-#define OM2M_AE_1     "LAMP_1"
-#define OM2M_DATA_CONT  "DATA"
 #define LISTENER_PORT  8000
 
 WiFiServer listener(LISTENER_PORT);
