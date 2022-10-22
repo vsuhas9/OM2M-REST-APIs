@@ -16,12 +16,3 @@
 
 # python_codes
 * Install the "requests", "os" and "json" modules (skip this step if already installed)
-* 
-
-# Data-WareHouse
-* 
-# Data-Visualization
-
-
-
-***Note:*** The user registration process for IUDX_APIs and IITH_APIs should be done only once so it is recommended to complete it using Postman Collection. Later, you can use Python scripts.
